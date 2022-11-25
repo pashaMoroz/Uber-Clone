@@ -19,6 +19,32 @@ class LoginController: UIViewController {
         return label
     }()
     
+    private lazy var emailContainerView: UIView = {
+        guard let image = UIImage(named: "ic_mail_outline_white_2x") else { return UIView() }
+        let view = UIView().inputContainerView(image: image, textFeild: emailTextFeild)
+        view.setHeight(50)
+        return view
+    }()
+    
+    private lazy var passwordContainerView: UIView = {
+        guard let image = UIImage(named: "ic_lock_outline_white_2x") else { return UIView() }
+        let view = UIView().inputContainerView(image: image, textFeild: passwordTextFeild)
+        view.setHeight(50)
+        return view
+    }()
+
+    private let emailTextFeild: UITextField = {
+       let tf = UITextField()
+        return UITextField().textFeild(withPlaceholder: "Email",
+                                       isSecureTextEntry: false)
+    }()
+    
+    private let passwordTextFeild: UITextField = {
+       let tf = UITextField()
+        return UITextField().textFeild(withPlaceholder: "Password",
+                                       isSecureTextEntry: false)
+    }()
+    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -28,7 +54,16 @@ class LoginController: UIViewController {
         
         view.addSubview(titleLabel)
         titleLabel.anchor(top: view.safeAreaLayoutGuide.topAnchor)
-        titleLabel.centerX(inView: view)    
+        titleLabel.centerX(inView: view)
+        
+        let stack = UIStackView(arrangedSubviews: [emailContainerView, passwordContainerView])
+        stack.axis = .vertical
+        stack.distribution = .fillEqually
+        stack.spacing = 16
+        view.addSubview(stack)
+        stack.anchor(top: titleLabel.bottomAnchor,
+                     left: view.leftAnchor, right: view.rightAnchor,
+                     paddingTop: 40, paddingLeft: 16, paddingRight: 16)
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
