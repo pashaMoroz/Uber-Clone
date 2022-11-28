@@ -11,6 +11,8 @@ class LoginController: UIViewController {
     
     // MARK: - Properties
     
+    var router: RouterProtocol?
+    
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "UBER"
@@ -56,6 +58,7 @@ class LoginController: UIViewController {
         return button
     }()
     
+    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -66,8 +69,7 @@ class LoginController: UIViewController {
     // MARK: - Action
     
     @objc func handleShowSignUp() {
-        let controller = SignUpController()
-        navigationController?.pushViewController(controller, animated: true)
+        router?.showSignUpController()
     }
     
     // MARK: - Helper
@@ -84,7 +86,6 @@ class LoginController: UIViewController {
         
         let stack = UIStackView(arrangedSubviews: [emailContainerView, passwordContainerView,loginButton])
         stack.axis = .vertical
-        stack.distribution = .fillEqually
         stack.spacing = 24
         view.addSubview(stack)
         stack.anchor(top: titleLabel.bottomAnchor,

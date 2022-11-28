@@ -16,6 +16,8 @@
 		847D702B293409CA0033DC20 /* RootNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D702A293409CA0033DC20 /* RootNavigationController.swift */; };
 		847D702D2934F69D0033DC20 /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D702C2934F69D0033DC20 /* SignUpController.swift */; };
 		847D703229350F720033DC20 /* AuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D703129350F720033DC20 /* AuthButton.swift */; };
+		847D703729351A900033DC20 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D703629351A900033DC20 /* Router.swift */; };
+		847D703929351AA60033DC20 /* AssemblyModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D703829351AA60033DC20 /* AssemblyModuleBuilder.swift */; };
 		84F93DD2292D5DCA005B7AFD /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F93DD1292D5DCA005B7AFD /* LoginController.swift */; };
 		84F93DD4292E8178005B7AFD /* Extension+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F93DD3292E8178005B7AFD /* Extension+UIView.swift */; };
 		84F93DD7292EB7A8005B7AFD /* Extension+UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F93DD6292EB7A8005B7AFD /* Extension+UITextField.swift */; };
@@ -33,6 +35,8 @@
 		847D702A293409CA0033DC20 /* RootNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootNavigationController.swift; sourceTree = "<group>"; };
 		847D702C2934F69D0033DC20 /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
 		847D703129350F720033DC20 /* AuthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButton.swift; sourceTree = "<group>"; };
+		847D703629351A900033DC20 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		847D703829351AA60033DC20 /* AssemblyModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssemblyModuleBuilder.swift; sourceTree = "<group>"; };
 		84F93DD1292D5DCA005B7AFD /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		84F93DD3292E8178005B7AFD /* Extension+UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIView.swift"; sourceTree = "<group>"; };
 		84F93DD6292EB7A8005B7AFD /* Extension+UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UITextField.swift"; sourceTree = "<group>"; };
@@ -68,13 +72,11 @@
 		845EF535292D598000AF7395 /* Uber Clone */ = {
 			isa = PBXGroup;
 			children = (
-				845EF54E292D5C3100AF7395 /* Model */,
-				845EF54D292D5C2F00AF7395 /* View */,
-				845EF54C292D5C2E00AF7395 /* Controller */,
+				847D703529351A850033DC20 /* Router */,
+				847D703D2935212E0033DC20 /* Screens */,
 				845EF54B292D5C2C00AF7395 /* Service */,
 				845EF54A292D5C2A00AF7395 /* Utilis */,
-				845EF536292D598000AF7395 /* AppDelegate.swift */,
-				845EF538292D598000AF7395 /* SceneDelegate.swift */,
+				847D703429351A790033DC20 /* Settings */,
 				845EF53F292D598100AF7395 /* Assets.xcassets */,
 				845EF541292D598100AF7395 /* LaunchScreen.storyboard */,
 				845EF544292D598100AF7395 /* Info.plist */,
@@ -97,19 +99,11 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
-		845EF54C292D5C2E00AF7395 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				847D702A293409CA0033DC20 /* RootNavigationController.swift */,
-				84F93DD1292D5DCA005B7AFD /* LoginController.swift */,
-				847D702C2934F69D0033DC20 /* SignUpController.swift */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
 		845EF54D292D5C2F00AF7395 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				84F93DD1292D5DCA005B7AFD /* LoginController.swift */,
+				847D702C2934F69D0033DC20 /* SignUpController.swift */,
 				847D703329350FBF0033DC20 /* CustomUI */,
 			);
 			path = View;
@@ -128,6 +122,58 @@
 				847D703129350F720033DC20 /* AuthButton.swift */,
 			);
 			path = CustomUI;
+			sourceTree = "<group>";
+		};
+		847D703429351A790033DC20 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				845EF536292D598000AF7395 /* AppDelegate.swift */,
+				845EF538292D598000AF7395 /* SceneDelegate.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		847D703529351A850033DC20 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				847D703C293520130033DC20 /* RootNavController */,
+				847D703629351A900033DC20 /* Router.swift */,
+				847D703829351AA60033DC20 /* AssemblyModuleBuilder.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		847D703A29351F8E0033DC20 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		847D703B29351FA30033DC20 /* Authentification */ = {
+			isa = PBXGroup;
+			children = (
+				845EF54E292D5C3100AF7395 /* Model */,
+				845EF54D292D5C2F00AF7395 /* View */,
+				847D703A29351F8E0033DC20 /* ViewModel */,
+			);
+			path = Authentification;
+			sourceTree = "<group>";
+		};
+		847D703C293520130033DC20 /* RootNavController */ = {
+			isa = PBXGroup;
+			children = (
+				847D702A293409CA0033DC20 /* RootNavigationController.swift */,
+			);
+			path = RootNavController;
+			sourceTree = "<group>";
+		};
+		847D703D2935212E0033DC20 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				847D703B29351FA30033DC20 /* Authentification */,
+			);
+			path = Screens;
 			sourceTree = "<group>";
 		};
 		84F93DD5292EB76E005B7AFD /* Extensions */ = {
@@ -211,6 +257,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				847D703729351A900033DC20 /* Router.swift in Sources */,
 				845EF537292D598000AF7395 /* AppDelegate.swift in Sources */,
 				847D703229350F720033DC20 /* AuthButton.swift in Sources */,
 				847D702B293409CA0033DC20 /* RootNavigationController.swift in Sources */,
@@ -221,6 +268,7 @@
 				847D700329312B480033DC20 /* Extension+UIButton.swift in Sources */,
 				845EF539292D598000AF7395 /* SceneDelegate.swift in Sources */,
 				84F93DD4292E8178005B7AFD /* Extension+UIView.swift in Sources */,
+				847D703929351AA60033DC20 /* AssemblyModuleBuilder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

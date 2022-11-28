@@ -11,6 +11,8 @@ class SignUpController: UIViewController {
     
     // MARK:  Properties
     
+    var router: RouterProtocol?
+    
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "UBER"
@@ -80,11 +82,11 @@ class SignUpController: UIViewController {
     private let alreadyHaveAccountButton: UIButton = {
         let button = UIButton(type: .system)
         button.attributedTitle(firstPart: "Already have an account?", secondPart: "Log In")
-            button.addTarget(self, action: #selector(handleShowLogin), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handleShowLogin), for: .touchUpInside)
         return button
     }()
     
-    
+
     // MARK:  Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -94,7 +96,7 @@ class SignUpController: UIViewController {
     // MARK: - Action
     
     @objc func handleShowLogin() {
-        navigationController?.popViewController(animated: true)
+        router?.popToLoginController()
     }
     
     // MARK: - Helper
@@ -110,7 +112,6 @@ class SignUpController: UIViewController {
         let stack = UIStackView(arrangedSubviews: [emailContainerView, fullnameContainerView,
                                                    passwordContainerView, accountTypeContainerView, signUpButton])
         stack.axis = .vertical
-        stack.distribution = .fillProportionally
         stack.spacing = 24
         view.addSubview(stack)
         stack.anchor(top: titleLabel.bottomAnchor,
