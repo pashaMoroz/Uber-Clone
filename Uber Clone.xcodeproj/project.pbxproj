@@ -13,6 +13,9 @@
 		845EF543292D598100AF7395 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 845EF541292D598100AF7395 /* LaunchScreen.storyboard */; };
 		847D7001293129B70033DC20 /* Extension+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D7000293129B70033DC20 /* Extension+UIColor.swift */; };
 		847D700329312B480033DC20 /* Extension+UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D700229312B480033DC20 /* Extension+UIButton.swift */; };
+		847D702B293409CA0033DC20 /* RootNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D702A293409CA0033DC20 /* RootNavigationController.swift */; };
+		847D702D2934F69D0033DC20 /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D702C2934F69D0033DC20 /* SignUpController.swift */; };
+		847D703229350F720033DC20 /* AuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D703129350F720033DC20 /* AuthButton.swift */; };
 		84F93DD2292D5DCA005B7AFD /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F93DD1292D5DCA005B7AFD /* LoginController.swift */; };
 		84F93DD4292E8178005B7AFD /* Extension+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F93DD3292E8178005B7AFD /* Extension+UIView.swift */; };
 		84F93DD7292EB7A8005B7AFD /* Extension+UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F93DD6292EB7A8005B7AFD /* Extension+UITextField.swift */; };
@@ -27,6 +30,9 @@
 		845EF544292D598100AF7395 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		847D7000293129B70033DC20 /* Extension+UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIColor.swift"; sourceTree = "<group>"; };
 		847D700229312B480033DC20 /* Extension+UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIButton.swift"; sourceTree = "<group>"; };
+		847D702A293409CA0033DC20 /* RootNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootNavigationController.swift; sourceTree = "<group>"; };
+		847D702C2934F69D0033DC20 /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
+		847D703129350F720033DC20 /* AuthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButton.swift; sourceTree = "<group>"; };
 		84F93DD1292D5DCA005B7AFD /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		84F93DD3292E8178005B7AFD /* Extension+UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIView.swift"; sourceTree = "<group>"; };
 		84F93DD6292EB7A8005B7AFD /* Extension+UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UITextField.swift"; sourceTree = "<group>"; };
@@ -94,7 +100,9 @@
 		845EF54C292D5C2E00AF7395 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				847D702A293409CA0033DC20 /* RootNavigationController.swift */,
 				84F93DD1292D5DCA005B7AFD /* LoginController.swift */,
+				847D702C2934F69D0033DC20 /* SignUpController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -102,6 +110,7 @@
 		845EF54D292D5C2F00AF7395 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				847D703329350FBF0033DC20 /* CustomUI */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -111,6 +120,14 @@
 			children = (
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		847D703329350FBF0033DC20 /* CustomUI */ = {
+			isa = PBXGroup;
+			children = (
+				847D703129350F720033DC20 /* AuthButton.swift */,
+			);
+			path = CustomUI;
 			sourceTree = "<group>";
 		};
 		84F93DD5292EB76E005B7AFD /* Extensions */ = {
@@ -195,6 +212,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				845EF537292D598000AF7395 /* AppDelegate.swift in Sources */,
+				847D703229350F720033DC20 /* AuthButton.swift in Sources */,
+				847D702B293409CA0033DC20 /* RootNavigationController.swift in Sources */,
+				847D702D2934F69D0033DC20 /* SignUpController.swift in Sources */,
 				84F93DD2292D5DCA005B7AFD /* LoginController.swift in Sources */,
 				847D7001293129B70033DC20 /* Extension+UIColor.swift in Sources */,
 				84F93DD7292EB7A8005B7AFD /* Extension+UITextField.swift in Sources */,

@@ -9,20 +9,35 @@ import UIKit
 
 extension UIView {
     
-    func inputContainerView(image: UIImage, textFeild: UITextField) -> UIView {
+    func inputContainerView(image: UIImage, textFeild: UITextField? = nil,
+                            segmentedControl: UISegmentedControl? = nil) -> UIView {
         let view = UIView()
         
         let imageView = UIImageView()
         imageView.image = image
         imageView.alpha = 0.87
         view.addSubview(imageView)
-        imageView.centerY(inView: view)
-        imageView.anchor(left: view.leftAnchor, paddingLeft: 8, with: 24, height: 24)
         
-        view.addSubview(textFeild)
-        textFeild.anchor(left: imageView.rightAnchor, bottom: view.bottomAnchor,
-                              right:  view.rightAnchor, paddingLeft: 8, paddingBottom: 8)
-        textFeild.centerY(inView: view)
+        if let textFeild = textFeild {
+            
+            imageView.centerY(inView: view)
+            imageView.anchor(left: view.leftAnchor, paddingLeft: 8, width: 24, height: 24)
+            
+            view.addSubview(textFeild)
+            textFeild.anchor(left: imageView.rightAnchor, bottom: view.bottomAnchor,
+                                  right:  view.rightAnchor, paddingLeft: 8, paddingBottom: 8)
+            textFeild.centerY(inView: view)
+        }
+        
+        if let sc = segmentedControl {
+            imageView.anchor(top: view.topAnchor, left: view.leftAnchor,
+                           paddingTop: -8,  paddingLeft: 8,
+                             width: 24, height: 24)
+            view.addSubview(sc)
+            sc.anchor(left: view.leftAnchor, right: view.rightAnchor,
+                      paddingLeft: 8, paddingRight: 8)
+            sc.centerY(inView: view, constant: 8)
+        }
         
         let separatorView = UIView()
         separatorView.backgroundColor = .lightGray
@@ -41,7 +56,7 @@ extension UIView {
                 paddingLeft: CGFloat = 0,
                 paddingBottom: CGFloat = 0,
                 paddingRight: CGFloat = 0,
-                with: CGFloat? = nil,
+                width: CGFloat? = nil,
                 height:CGFloat? = nil) {
         
         translatesAutoresizingMaskIntoConstraints = false
@@ -62,8 +77,8 @@ extension UIView {
             rightAnchor.constraint(equalTo: right, constant: -paddingRight).isActive = true
         }
         
-        if let with = with {
-            widthAnchor.constraint(equalToConstant: with).isActive = true
+        if let width = width {
+            widthAnchor.constraint(equalToConstant: width).isActive = true
         }
         
         if let height = height {
@@ -75,8 +90,8 @@ extension UIView {
         centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     }
     
-    func centerY(inView view: UIView) {
-        centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+    func centerY(inView view: UIView, constant: CGFloat = 0) {
+        centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: constant).isActive = true
     }
     
     func setDimensions(height: CGFloat, width: CGFloat) {
