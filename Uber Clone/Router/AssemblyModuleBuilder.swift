@@ -14,20 +14,20 @@ protocol AssemblyModuleBuilder {
 
 struct AssemblyModuleBuilderImplementation: AssemblyModuleBuilder {
     func createLoginController(router: RouterProtocol) -> UIViewController {
-        let view = LoginController()
-        view.router = router
+        
+        let authService = AuthService()
+        let loginViewModel = LoginViewModel(authService: authService, router: router)
+        let view = LoginController(viewModel: loginViewModel)
+        loginViewModel.delegate = view
         
         return view
     }
     
     func createSignUpController(router: RouterProtocol) -> UIViewController {
         let authService = AuthService()
-        let signUpViewModel = SignUpViewModel(authService: authService)
-        
+        let signUpViewModel = SignUpViewModel(authService: authService, router: router)
         let view = SignUpController(viewModel: signUpViewModel)
-        
-        view.viewModel.delegate = view
-        view.router = router
+        signUpViewModel.delegate = view
         
         return view
     }

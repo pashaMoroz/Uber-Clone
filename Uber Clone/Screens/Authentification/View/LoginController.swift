@@ -11,7 +11,7 @@ class LoginController: UIViewController {
     
     // MARK: - Properties
     
-    var router: RouterProtocol?
+    let viewModel: LoginViewModelProtocol
     
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -48,16 +48,32 @@ class LoginController: UIViewController {
     }()
     
     private let loginButton: AuthButton = {
-        return AuthButton(titleText: "Log In")
+        
+        let button = AuthButton(titleText: "Log In")
+        button.addTarget(self, action: #selector(handleLogIn), for: .touchUpInside)
+        
+        return button
     }()
     
-    private let dontHaveAccountButton: UIButton = {
+    private lazy var dontHaveAccountButton: UIButton = {
         let button = UIButton(type: .system)
         button.attributedTitle(firstPart: "Don't have an account?", secondPart: "Sign Up")
         button.addTarget(self, action: #selector(handleShowSignUp), for: .touchUpInside)
         return button
     }()
     
+    init(viewModel: LoginViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    deinit {
+        print("LoginController deinit")
+    }
     
     // MARK: - Lifecycle
     
@@ -68,8 +84,13 @@ class LoginController: UIViewController {
     
     // MARK: - Action
     
+    @objc func handleLogIn() {
+        viewModel.logInWithEmail(email: emailTextFeild.text, password: passwordTextFeild.text)
+    }
+    
     @objc func handleShowSignUp() {
-        router?.showSignUpController()
+        
+        viewModel.showSignUpController()
     }
     
     // MARK: - Helper
@@ -99,5 +120,11 @@ class LoginController: UIViewController {
     
     func configureNavigationBar() {
         navigationController?.navigationBar.isHidden = true
+    }
+}
+
+extension LoginController: AuthAlertProtocol {
+    func showAlert() {
+        alert(message: "Authorisation Error")
     }
 }

@@ -12,9 +12,7 @@ class SignUpController: UIViewController {
     
     // MARK:  Properties
     
-    var viewModel: SignUpViewModelProtocol
-    
-    var router: RouterProtocol?
+    let viewModel: SignUpViewModelProtocol
     
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -78,7 +76,7 @@ class SignUpController: UIViewController {
         return sc
     }()
     
-    private let signUpButton: AuthButton = {
+    private lazy var signUpButton: AuthButton = {
         
         let button = AuthButton(titleText: "Sign Up")
         button.addTarget(self, action: #selector(handleSignUp), for: .touchUpInside)
@@ -86,7 +84,7 @@ class SignUpController: UIViewController {
         return button
     }()
     
-    private let alreadyHaveAccountButton: UIButton = {
+    private lazy var alreadyHaveAccountButton: UIButton = {
         let button = UIButton(type: .system)
         button.attributedTitle(firstPart: "Already have an account?", secondPart: "Log In")
         button.addTarget(self, action: #selector(handleShowLogin), for: .touchUpInside)
@@ -102,6 +100,10 @@ class SignUpController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    deinit {
+        print("SignUpController deinit")
+    }
+    
     
     // MARK:  Lifecycle
     override func viewDidLoad() {
@@ -112,12 +114,11 @@ class SignUpController: UIViewController {
     // MARK: - Action
     
     @objc func handleSignUp() {
-        
         viewModel.signUp(email: emailTextFeild.text, password: passwordTextFeild.text)
     }
     
     @objc func handleShowLogin() {
-        router?.popToLoginController()
+        viewModel.showLoginController()
     }
     
     // MARK: - Helper
@@ -142,13 +143,11 @@ class SignUpController: UIViewController {
         view.addSubview(alreadyHaveAccountButton)
         alreadyHaveAccountButton.centerX(inView: view)
         alreadyHaveAccountButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor, height: 32)
-        
     }
 }
 
-extension SignUpController: SignUpProtocol {
+extension SignUpController: AuthAlertProtocol {
     func showAlert() {
-        
         alert(message: "Email or password invalid")
     }
 }

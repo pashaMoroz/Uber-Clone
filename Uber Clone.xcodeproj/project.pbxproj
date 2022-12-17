@@ -14,9 +14,10 @@
 		845EF543292D598100AF7395 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 845EF541292D598100AF7395 /* LaunchScreen.storyboard */; };
 		847C0D06294CC4BE00D38336 /* CredentionalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847C0D05294CC4BE00D38336 /* CredentionalModel.swift */; };
 		847C0D08294CC59200D38336 /* Extension+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847C0D07294CC59200D38336 /* Extension+String.swift */; };
-		847C0D0B294CDA6800D38336 /* AuthentificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847C0D0A294CDA6800D38336 /* AuthentificationViewModel.swift */; };
+		847C0D0B294CDA6800D38336 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847C0D0A294CDA6800D38336 /* SignUpViewModel.swift */; };
 		847C0D0E294CE39B00D38336 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847C0D0D294CE39B00D38336 /* AuthService.swift */; };
 		847C0D10294CFCFE00D38336 /* Extension+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847C0D0F294CFCFE00D38336 /* Extension+UIViewController.swift */; };
+		847C0D12294E1DAF00D38336 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847C0D11294E1DAF00D38336 /* LoginViewModel.swift */; };
 		847D7001293129B70033DC20 /* Extension+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D7000293129B70033DC20 /* Extension+UIColor.swift */; };
 		847D700329312B480033DC20 /* Extension+UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D700229312B480033DC20 /* Extension+UIButton.swift */; };
 		847D702B293409CA0033DC20 /* RootNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D702A293409CA0033DC20 /* RootNavigationController.swift */; };
@@ -39,9 +40,10 @@
 		845EF544292D598100AF7395 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		847C0D05294CC4BE00D38336 /* CredentionalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentionalModel.swift; sourceTree = "<group>"; };
 		847C0D07294CC59200D38336 /* Extension+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+String.swift"; sourceTree = "<group>"; };
-		847C0D0A294CDA6800D38336 /* AuthentificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthentificationViewModel.swift; sourceTree = "<group>"; };
+		847C0D0A294CDA6800D38336 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		847C0D0D294CE39B00D38336 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		847C0D0F294CFCFE00D38336 /* Extension+UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIViewController.swift"; sourceTree = "<group>"; };
+		847C0D11294E1DAF00D38336 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		847D7000293129B70033DC20 /* Extension+UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIColor.swift"; sourceTree = "<group>"; };
 		847D700229312B480033DC20 /* Extension+UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIButton.swift"; sourceTree = "<group>"; };
 		847D702A293409CA0033DC20 /* RootNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootNavigationController.swift; sourceTree = "<group>"; };
@@ -193,7 +195,8 @@
 		847D703A29351F8E0033DC20 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				847C0D0A294CDA6800D38336 /* AuthentificationViewModel.swift */,
+				847C0D11294E1DAF00D38336 /* LoginViewModel.swift */,
+				847C0D0A294CDA6800D38336 /* SignUpViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -368,13 +371,14 @@
 				847D702D2934F69D0033DC20 /* SignUpController.swift in Sources */,
 				84F93DD2292D5DCA005B7AFD /* LoginController.swift in Sources */,
 				847D7001293129B70033DC20 /* Extension+UIColor.swift in Sources */,
+				847C0D12294E1DAF00D38336 /* LoginViewModel.swift in Sources */,
 				84F93DD7292EB7A8005B7AFD /* Extension+UITextField.swift in Sources */,
 				847C0D08294CC59200D38336 /* Extension+String.swift in Sources */,
 				847D700329312B480033DC20 /* Extension+UIButton.swift in Sources */,
 				845EF539292D598000AF7395 /* SceneDelegate.swift in Sources */,
 				847C0D06294CC4BE00D38336 /* CredentionalModel.swift in Sources */,
 				84F93DD4292E8178005B7AFD /* Extension+UIView.swift in Sources */,
-				847C0D0B294CDA6800D38336 /* AuthentificationViewModel.swift in Sources */,
+				847C0D0B294CDA6800D38336 /* SignUpViewModel.swift in Sources */,
 				847D703929351AA60033DC20 /* AssemblyModuleBuilder.swift in Sources */,
 				847C0D0E294CE39B00D38336 /* AuthService.swift in Sources */,
 			);
