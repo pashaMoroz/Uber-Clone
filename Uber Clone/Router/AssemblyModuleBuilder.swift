@@ -21,7 +21,12 @@ struct AssemblyModuleBuilderImplementation: AssemblyModuleBuilder {
     }
     
     func createSignUpController(router: RouterProtocol) -> UIViewController {
-        let view = SignUpController()
+        let authService = AuthService()
+        let signUpViewModel = SignUpViewModel(authService: authService)
+        
+        let view = SignUpController(viewModel: signUpViewModel)
+        
+        view.viewModel.delegate = view
         view.router = router
         
         return view

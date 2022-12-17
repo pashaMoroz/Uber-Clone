@@ -34,21 +34,21 @@ class LoginController: UIViewController {
         view.setHeight(50)
         return view
     }()
-
+    
     private let emailTextFeild: UITextField = {
-       let tf = UITextField()
+        let tf = UITextField()
         return UITextField().textFeild(withPlaceholder: "Email",
                                        isSecureTextEntry: false)
     }()
     
     private let passwordTextFeild: UITextField = {
-       let tf = UITextField()
+        let tf = UITextField()
         return UITextField().textFeild(withPlaceholder: "Password",
                                        isSecureTextEntry: false)
     }()
     
     private let loginButton: AuthButton = {
-       return AuthButton(titleText: "Log In")
+        return AuthButton(titleText: "Log In")
     }()
     
     private let dontHaveAccountButton: UIButton = {
@@ -63,7 +63,7 @@ class LoginController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureUI()
+        configureUI()        
     }
     
     // MARK: - Action

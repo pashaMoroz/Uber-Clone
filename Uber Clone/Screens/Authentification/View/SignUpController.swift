@@ -6,10 +6,13 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SignUpController: UIViewController {
     
     // MARK:  Properties
+    
+    var viewModel: SignUpViewModelProtocol
     
     var router: RouterProtocol?
     
@@ -48,21 +51,21 @@ class SignUpController: UIViewController {
         view.setHeight(80)
         return view
     }()
-
+    
     private let emailTextFeild: UITextField = {
-       let tf = UITextField()
+        let tf = UITextField()
         return UITextField().textFeild(withPlaceholder: "Email",
                                        isSecureTextEntry: false)
     }()
     
     private let fullnameTextFeild: UITextField = {
-       let tf = UITextField()
+        let tf = UITextField()
         return UITextField().textFeild(withPlaceholder: "Fullname",
                                        isSecureTextEntry: false)
     }()
     
     private let passwordTextFeild: UITextField = {
-       let tf = UITextField()
+        let tf = UITextField()
         return UITextField().textFeild(withPlaceholder: "Password",
                                        isSecureTextEntry: false)
     }()
@@ -76,7 +79,11 @@ class SignUpController: UIViewController {
     }()
     
     private let signUpButton: AuthButton = {
-       return AuthButton(titleText: "Sign Up")
+        
+        let button = AuthButton(titleText: "Sign Up")
+        button.addTarget(self, action: #selector(handleSignUp), for: .touchUpInside)
+        
+        return button
     }()
     
     private let alreadyHaveAccountButton: UIButton = {
@@ -86,7 +93,16 @@ class SignUpController: UIViewController {
         return button
     }()
     
-
+    init(viewModel: SignUpViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
     // MARK:  Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -95,6 +111,11 @@ class SignUpController: UIViewController {
     
     // MARK: - Action
     
+    @objc func handleSignUp() {
+        
+        viewModel.signUp(email: emailTextFeild.text, password: passwordTextFeild.text)
+    }
+    
     @objc func handleShowLogin() {
         router?.popToLoginController()
     }
@@ -102,7 +123,7 @@ class SignUpController: UIViewController {
     // MARK: - Helper
     
     func configureUI() {
-                
+        
         view.backgroundColor = .backgroundColor
         
         view.addSubview(titleLabel)
@@ -122,5 +143,12 @@ class SignUpController: UIViewController {
         alreadyHaveAccountButton.centerX(inView: view)
         alreadyHaveAccountButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor, height: 32)
         
+    }
+}
+
+extension SignUpController: SignUpProtocol {
+    func showAlert() {
+        
+        alert(message: "Email or password invalid")
     }
 }
