@@ -62,7 +62,7 @@ class LoginController: UIViewController {
         return button
     }()
     
-    init(viewModel: LoginViewModel) {
+    init(viewModel: LoginViewModelProtocol) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -89,7 +89,6 @@ class LoginController: UIViewController {
     }
     
     @objc func handleShowSignUp() {
-        
         viewModel.showSignUpController()
     }
     
@@ -124,7 +123,5 @@ class LoginController: UIViewController {
 }
 
 extension LoginController: AuthAlertProtocol {
-    func showAlert() {
-        alert(message: "Authorisation Error")
-    }
+    
 }

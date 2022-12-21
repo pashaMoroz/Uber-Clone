@@ -8,15 +8,18 @@
 import Foundation
 
 protocol AuthAlertProtocol: AnyObject {
-    func showAlert()
+    func showMessage(withTitle: String, message: String)
+    func showLoader(_ show: Bool)
 }
 
 protocol SignUpViewModelProtocol {
-    func signUp(email: String?, password: String?)
+    func signUp(credential: AuthCredential?)
     func showLoginController()
 }
 
 class SignUpViewModel: SignUpViewModelProtocol {
+    
+    // MARK: - Properties
     
     private let authService: AuthServiceProtocol
     private let router: RouterProtocol
@@ -28,14 +31,31 @@ class SignUpViewModel: SignUpViewModelProtocol {
         self.router = router
     }
     
-    func signUp(email: String?, password: String?) {
+    
+    // MARK: - Action
+    
+    func signUp(credential: AuthCredential?) {
         
-        if let email = Email(email), let password = Password(password) {
-            authService.registrationUser(email: email, password: password)
-        } else {
-            delegate?.showAlert()
+        if credential == nil {
+
+            delegate?.showMessage(withTitle: "Error", message: "Error in the data you specified")
+            return
         }
+        
+        self.delegate?.showLoader(true)
+        
+        authService.registrationUser(withCredential: credential) { error in
+            
+            if let error = error {
+                self.delegate?.showMessage(withTitle: "Error", message: error.localizedDescription)
+                self.delegate?.showLoader(false)
+            }
+            // router.goToMainVC
+        }
+        self.delegate?.showLoader(false)
     }
+    
+    // MARK: - Navigation
     
     func showLoginController() {
         router.popToLoginController()

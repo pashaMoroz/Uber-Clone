@@ -91,7 +91,7 @@ class SignUpController: UIViewController {
         return button
     }()
     
-    init(viewModel: SignUpViewModel) {
+    init(viewModel: SignUpViewModelProtocol) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -114,7 +114,11 @@ class SignUpController: UIViewController {
     // MARK: - Action
     
     @objc func handleSignUp() {
-        viewModel.signUp(email: emailTextFeild.text, password: passwordTextFeild.text)
+        
+        viewModel.signUp(credential: AuthCredential(email: emailTextFeild.text,
+                                                    password: passwordTextFeild.text,
+                                                    fullname: fullnameTextFeild.text,
+                                                    accountType: AccountType(rawValue: accountTypeSegmentedControl.selectedSegmentIndex)))
     }
     
     @objc func handleShowLogin() {
@@ -147,7 +151,5 @@ class SignUpController: UIViewController {
 }
 
 extension SignUpController: AuthAlertProtocol {
-    func showAlert() {
-        alert(message: "Email or password invalid")
-    }
+
 }

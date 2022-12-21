@@ -7,22 +7,22 @@
 
 import Foundation
 
-struct Email {
-    let string: String
+struct Email: Equatable {
+    let validateValue: String
     
     init?(_ rawString: String?) {
         guard let rawString = rawString else { return nil }
         guard rawString.isValidEmail() else { return nil }
-        string = rawString
+        validateValue = rawString
     }
 }
 
-struct Password {
-    let string: String
+struct Password: Equatable {
+    let validateValue: String
     
     init?(_ rawString: String?) {
         guard let rawString = rawString else { return nil }
         guard rawString.count >= 6 else { return nil }
-        string = rawString
+        validateValue = rawString
     }
 }

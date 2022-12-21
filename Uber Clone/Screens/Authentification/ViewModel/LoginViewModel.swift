@@ -27,9 +27,15 @@ class LoginViewModel: LoginViewModelProtocol {
     func logInWithEmail(email: String?, password: String?) {
         
         if let email = Email(email), let password = Password(password) {
-            authService.authorization(email: email, password: password)
+            authService.authorizationUser(email: email, password: password) { result, error in
+                if let error = error {
+                    self.delegate?.showMessage(withTitle: "Error", message: error.localizedDescription)
+                    return
+                }
+                print("Log in")
+            }
         } else {
-            delegate?.showAlert()
+            self.delegate?.showMessage(withTitle: "Error", message: "Error in the data you specified")
         }
     }
     
