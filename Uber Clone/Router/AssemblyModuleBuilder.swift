@@ -29,6 +29,7 @@ struct AssemblyModuleBuilderImplementation: AssemblyModuleBuilder {
         let view = SignUpController(viewModel: signUpViewModel)
         signUpViewModel.delegate = view
         
+        print("test")
         return view
     }
 }
