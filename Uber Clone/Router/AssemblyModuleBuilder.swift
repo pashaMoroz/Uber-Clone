@@ -30,6 +30,7 @@ struct AssemblyModuleBuilderImplementation: AssemblyModuleBuilder {
         signUpViewModel.delegate = view
         
         print("test")
+        print("test")
         return view
     }
 }
